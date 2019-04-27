@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Karla');
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+  font-family: "Karla", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+  vertical-align: middle;
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #D62598;
+}
+
+a:link {
+  text-decoration: underline;
+  color: #EB6FBD;
+}
+
+a:hover {
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: #EB6FBD;
+  color: #FFFFFF;
+}
+
+a:visited {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #25282A;
+}
