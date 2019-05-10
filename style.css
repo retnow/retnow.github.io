@@ -21,9 +21,9 @@ img.center {
 }
 
 h1 {
+  font-size: 72px;
   text-align: center;
   font-weight: bold;
-  text-decoration: underline;
   color: #D62598;
 }
 
