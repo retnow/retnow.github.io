@@ -21,26 +21,26 @@ img.center {
 }
 
 h1 {
-  font-size: 72px;
   text-align: center;
   font-weight: bold;
   color: #D62598;
+  text-decoration:none;
 }
 
 a:link {
-  text-decoration: underline;
+  text-decoration: none;
   color: #EB6FBD;
 }
 
 a:hover {
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none;
   background-color: #EB6FBD;
   color: #FFFFFF;
 }
 
 a:visited {
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none;
   color: #25282A;
 }
