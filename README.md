@@ -1,2 +1,2 @@
 # retnow.github.io
-a single link to my website. ♪♫*•♪
+My favourite kaomoji. ♪♫*•♪
