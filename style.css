@@ -1,11 +1,11 @@
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
-  --ink: #111111;
-  --muted: #4e4e4e;
-  --line: #d9d9d9;
-  --accent: #8f7c8d;
-  --accent-soft: #f4eef3;
+  --ink: #1d1819;
+  --muted: #615556;
+  --line: #d7cccf;
+  --accent: #9b7f8c;
+  --accent-soft: #f4ecef;
   --max-width: 1120px;
   --space-xs: 0.5rem;
   --space-sm: 0.9rem;
@@ -42,7 +42,7 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--ink);
-  font-family: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.65;
   transition: background-color 180ms ease, color 180ms ease;
 }
