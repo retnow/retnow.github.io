@@ -16,7 +16,20 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="/style.css">
+    <script>
+      (function () {
+        var storedTheme = localStorage.getItem("retnow-theme");
+        var theme = storedTheme;
+
+        if (theme !== "light" && theme !== "dark") {
+          theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        document.documentElement.dataset.theme = theme;
+      }());
+    </script>
+    <link rel="stylesheet" href="/style.css?v=20260326b">
+    <script src="/script.js?v=20260326b" defer></script>
   </head>
   <body>
     <div class="page-shell">
@@ -25,24 +38,31 @@
           <a href="/" aria-current="page">About</a>
           <a href="/hire/">Work</a>
         </nav>
-        <div class="icon-links header-links" aria-label="Contact links">
-          <a class="icon-link" href="mailto:retno@retnowidyanti.com" aria-label="Email">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="1.6"/>
-              <path d="M4 6l8 7 8-7" fill="none" stroke="currentColor" stroke-width="1.6"/>
-            </svg>
-          </a>
-          <a class="icon-link" href="https://www.linkedin.com/in/retnowidyanti/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M5.2 8.6h3.1V19H5.2zm1.5-4.4a1.8 1.8 0 110 3.6 1.8 1.8 0 010-3.6zm3.8 4.4h2.9v1.4h.1c.4-.8 1.4-1.7 3-1.7 3.2 0 3.8 2.1 3.8 4.9V19h-3.1v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V19h-3.1z" fill="currentColor"/>
-            </svg>
-          </a>
-          <a class="icon-link" href="https://github.com/retnow" target="_blank" rel="noreferrer" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2.8a9.3 9.3 0 00-2.9 18.1c.5.1.6-.2.6-.5v-1.8c-2.5.6-3-1.1-3-1.1-.4-1-.9-1.3-.9-1.3-.8-.5.1-.5.1-.5.9.1 1.4 1 1.4 1 .8 1.4 2.2 1 2.7.8.1-.6.3-1 .6-1.3-2-.2-4.2-1-4.2-4.5 0-1 .3-1.8.9-2.4-.1-.2-.4-1.2.1-2.4 0 0 .8-.2 2.5.9a8.6 8.6 0 014.6 0c1.7-1.1 2.5-.9 2.5-.9.5 1.2.2 2.2.1 2.4.6.6.9 1.4.9 2.4 0 3.5-2.1 4.3-4.2 4.5.3.3.7.8.7 1.7v2.5c0 .3.1.6.6.5A9.3 9.3 0 0012 2.8z" fill="currentColor"/>
-            </svg>
-          </a>
+        <div class="header-tools">
+          <div class="icon-links header-links" aria-label="Contact links">
+            <a class="icon-link" href="mailto:retno@retnowidyanti.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 5h18v14H3z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M4 6l8 7 8-7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </a>
+            <a class="icon-link" href="https://www.linkedin.com/in/retnowidyanti/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5.2 8.6h3.1V19H5.2zm1.5-4.4a1.8 1.8 0 110 3.6 1.8 1.8 0 010-3.6zm3.8 4.4h2.9v1.4h.1c.4-.8 1.4-1.7 3-1.7 3.2 0 3.8 2.1 3.8 4.9V19h-3.1v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V19h-3.1z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a class="icon-link" href="https://github.com/retnow" target="_blank" rel="noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.8a9.3 9.3 0 00-2.9 18.1c.5.1.6-.2.6-.5v-1.8c-2.5.6-3-1.1-3-1.1-.4-1-.9-1.3-.9-1.3-.8-.5.1-.5.1-.5.9.1 1.4 1 1.4 1 .8 1.4 2.2 1 2.7.8.1-.6.3-1 .6-1.3-2-.2-4.2-1-4.2-4.5 0-1 .3-1.8.9-2.4-.1-.2-.4-1.2.1-2.4 0 0 .8-.2 2.5.9a8.6 8.6 0 014.6 0c1.7-1.1 2.5-.9 2.5-.9.5 1.2.2 2.2.1 2.4.6.6.9 1.4.9 2.4 0 3.5-2.1 4.3-4.2 4.5.3.3.7.8.7 1.7v2.5c0 .3.1.6.6.5A9.3 9.3 0 0012 2.8z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
         </div>
+        <button class="theme-toggle" type="button" data-theme-toggle>
+          <span class="theme-toggle-switch" aria-hidden="true">
+            <span class="theme-toggle-thumb"></span>
+          </span>
+        </button>
       </header>
 
       <main class="stack-layout">
