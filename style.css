@@ -443,6 +443,34 @@ html[data-theme="dark"] .portrait-frame img {
   font-size: 0.98rem;
 }
 
+.soup-stage {
+  padding-top: var(--space-sm);
+}
+
+.soup-photo {
+  width: 100%;
+  object-position: center;
+  filter: saturate(0.96) contrast(1.02);
+}
+
+.soup-caption {
+  margin: 0;
+}
+
+.soup-back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  text-decoration-thickness: 1px;
+}
+
+.soup-back-link:hover,
+.soup-back-link:focus-visible {
+  color: var(--ink);
+}
+
 @media (max-width: 900px) {
   .hero,
   .card-grid,

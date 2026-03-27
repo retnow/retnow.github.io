@@ -29,17 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
   applyTheme(getPreferredTheme());
 
   const toggle = document.querySelector("[data-theme-toggle]");
-  if (!toggle) {
-    return;
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.dataset.theme === "dark"
+        ? "dark"
+        : "light";
+      const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+      localStorage.setItem(THEME_KEY, nextTheme);
+      applyTheme(nextTheme);
+    });
   }
-
-  toggle.addEventListener("click", () => {
-    const currentTheme = document.documentElement.dataset.theme === "dark"
-      ? "dark"
-      : "light";
-    const nextTheme = currentTheme === "dark" ? "light" : "dark";
-
-    localStorage.setItem(THEME_KEY, nextTheme);
-    applyTheme(nextTheme);
-  });
 });
