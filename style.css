@@ -6,6 +6,7 @@
   --line: #d7cccf;
   --accent: #9b7f8c;
   --accent-soft: #f4ecef;
+  --body-font: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --max-width: 1120px;
   --space-xs: 0.5rem;
   --space-sm: 0.9rem;
@@ -42,7 +43,7 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--ink);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--body-font);
   line-height: 1.65;
   transition: background-color 180ms ease, color 180ms ease;
 }
@@ -84,6 +85,8 @@ h2,
 h3 {
   font-family: "Instrument Serif", Georgia, serif;
   font-weight: 400;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .site-nav {
@@ -92,7 +95,7 @@ h3 {
   align-items: center;
   gap: 1.05rem;
   font-size: 0.92rem;
-  letter-spacing: 0.11em;
+  letter-spacing: 0;
   text-transform: uppercase;
   margin-right: auto;
 }
@@ -214,7 +217,7 @@ html[data-theme="dark"] .theme-toggle-switch {
   color: var(--accent);
   font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -228,7 +231,7 @@ html[data-theme="dark"] .theme-toggle-switch {
   font-family: "Instrument Serif", Georgia, serif;
   font-size: 1.55rem;
   font-weight: 400;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
   text-transform: none;
 }
 
@@ -237,7 +240,7 @@ h2,
 h3 {
   margin: 0;
   line-height: 0.98;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }
 
 h1 {
@@ -262,13 +265,13 @@ h3 {
 .stack-list,
 .quick-notes {
   color: var(--muted);
-  font-size: 1.04rem;
+  font-size: 0.94rem;
 }
 
 .lede {
   max-width: 34rem;
   margin: 0 0 1rem;
-  font-size: 1.1rem;
+  font-size: 0.98rem;
 }
 
 .supporting-copy {
@@ -363,6 +366,21 @@ html[data-theme="dark"] .portrait-frame img {
 .work-card.featured {
   background: var(--accent-soft);
   padding: var(--space-sm);
+}
+
+.now-card {
+  max-width: 42rem;
+}
+
+.now-command {
+  display: inline-flex;
+  margin: 0.8rem 0 0;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--ink);
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
 }
 
 .hobby-card {
