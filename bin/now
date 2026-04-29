@@ -1,0 +1,153 @@
+#!/bin/zsh
+
+set -euo pipefail
+
+script_dir=${0:A:h}
+repo_root=${script_dir:h}
+now_file=${NOW_FILE:-$repo_root/now}
+now_path_for_git=${now_file}
+
+usage() {
+  cat <<'EOF'
+Usage:
+  ./bin/now --thought "..." [--reading "..."]
+  ./bin/now --thought "..." [--reading "..."] --publish [--message "..."]
+  ./bin/now --show
+
+Examples:
+  ./bin/now --thought "Three weeks until the marathon."
+  ./bin/now --thought "New app idea unlocked." --reading "Exophony by Yoko Tawada"
+  ./bin/now --thought "Fresh update." --publish
+
+Options:
+  --thought   Replace the "Current thought" line.
+  --reading   Replace the "Currently reading" line.
+  --publish   Stage, commit, and push the updated now file.
+  --message   Override the default commit message used with --publish.
+  --show      Print the current file without changing it.
+  --help      Show this help text.
+
+Environment:
+  NOW_FILE    Override the target file path.
+EOF
+}
+
+if [[ ! -f "$now_file" ]]; then
+  echo "Could not find now file at: $now_file" >&2
+  exit 1
+fi
+
+if [[ "$now_file" == "$repo_root/"* ]]; then
+  now_path_for_git=${now_file#$repo_root/}
+fi
+
+show_only=0
+publish=0
+thought=""
+reading=""
+commit_message=""
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --thought)
+      [[ $# -ge 2 ]] || { echo "--thought requires a value" >&2; exit 1; }
+      thought=$2
+      shift 2
+      ;;
+    --reading)
+      [[ $# -ge 2 ]] || { echo "--reading requires a value" >&2; exit 1; }
+      reading=$2
+      shift 2
+      ;;
+    --show)
+      show_only=1
+      shift
+      ;;
+    --publish)
+      publish=1
+      shift
+      ;;
+    --message)
+      [[ $# -ge 2 ]] || { echo "--message requires a value" >&2; exit 1; }
+      commit_message=$2
+      shift 2
+      ;;
+    --help|-h)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
+if (( show_only )); then
+  cat "$now_file"
+  exit 0
+fi
+
+current_reading=$(sed -n 's/^Currently reading: //p' "$now_file")
+current_thought=$(sed -n 's/^Current thought: //p' "$now_file")
+
+if [[ -z "$reading" ]]; then
+  reading=$current_reading
+fi
+
+if [[ -z "$thought" ]]; then
+  thought=$current_thought
+fi
+
+if [[ -z "$reading" || -z "$thought" ]]; then
+  echo "Could not determine both reading and thought values." >&2
+  echo "Pass them explicitly with --reading and --thought." >&2
+  exit 1
+fi
+
+today=$(date +%F)
+
+cat > "$now_file" <<EOF
+Updated: $today
+Currently reading: $reading
+Current thought: $thought
+EOF
+
+cat "$now_file"
+
+if (( ! publish )); then
+  exit 0
+fi
+
+if ! git -C "$repo_root" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "This script must run inside a git repository to publish." >&2
+  exit 1
+fi
+
+branch=$(git -C "$repo_root" branch --show-current)
+
+if [[ -z "$branch" ]]; then
+  echo "Could not determine the current git branch." >&2
+  exit 1
+fi
+
+if ! git -C "$repo_root" remote get-url origin >/dev/null 2>&1; then
+  echo "No git remote named origin is configured." >&2
+  exit 1
+fi
+
+git -C "$repo_root" add -- "$now_path_for_git"
+
+if git -C "$repo_root" diff --cached --quiet -- "$now_path_for_git"; then
+  echo
+  echo "No changes to publish."
+  exit 0
+fi
+
+if [[ -z "$commit_message" ]]; then
+  commit_message="Update now for $today"
+fi
+
+git -C "$repo_root" commit -m "$commit_message" -- "$now_path_for_git"
+git -C "$repo_root" push origin "$branch"
