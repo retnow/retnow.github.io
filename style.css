@@ -489,12 +489,75 @@ html[data-theme="dark"] .portrait-frame img {
   color: var(--ink);
 }
 
+.music-intro {
+  max-width: 46rem;
+  padding-bottom: var(--space-md);
+}
+
+.music-intro .supporting-copy {
+  max-width: 43rem;
+}
+
+.music-list {
+  display: grid;
+  border-bottom: 1px solid var(--line);
+}
+
+.music-piece {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.7fr) minmax(18rem, 1.3fr);
+  gap: var(--space-lg);
+  align-items: start;
+  padding: 1.4rem 0 1.65rem;
+  border-top: 1px solid var(--line);
+}
+
+.music-piece:first-child {
+  border-top: 0;
+}
+
+.music-piece h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0.65rem;
+}
+
+.piece-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.piece-note {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.music-piece audio {
+  display: block;
+  width: 100%;
+  min-height: 3.25rem;
+  color-scheme: light;
+}
+
+html[data-theme="dark"] .music-piece audio {
+  color-scheme: dark;
+}
+
 @media (max-width: 900px) {
   .hero,
   .card-grid,
   .split-section,
-  .favourites-layout {
+  .favourites-layout,
+  .music-piece {
     grid-template-columns: 1fr;
+  }
+
+  .music-piece {
+    gap: 1rem;
   }
 
   .site-header {
