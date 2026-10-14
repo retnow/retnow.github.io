@@ -246,22 +246,20 @@ h3 {
   margin: 0;
   line-height: 0.92;
   letter-spacing: 0;
-  transform: scaleX(0.985);
-  transform-origin: left center;
 }
 
 h1 {
-  font-size: clamp(4.25rem, 9vw, 8rem);
+  font-size: clamp(3.75rem, 7vw, 6rem);
   margin-bottom: 2rem;
 }
 
 h2 {
-  font-size: clamp(2.5rem, 4.75vw, 4.5rem);
+  font-size: clamp(2.25rem, 4vw, 3.75rem);
   margin-bottom: 1.25rem;
 }
 
 h3 {
-  font-size: clamp(1.65rem, 2.4vw, 2.25rem);
+  font-size: clamp(1.5rem, 2vw, 2rem);
   margin-bottom: 1rem;
 }
 
@@ -533,7 +531,7 @@ html[data-theme="dark"] .portrait-frame img {
 }
 
 .music-piece h2 {
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(2.25rem, 3.5vw, 3.5rem);
   margin-bottom: 1.25rem;
 }
 
